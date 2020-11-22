@@ -10,8 +10,6 @@ import io from 'socket.io-client';
 
 Vue.config.productionTip = false;
 
-Vue.use(VueSocketIO, io('/'));
-
 new Vue({
   router,
   store,

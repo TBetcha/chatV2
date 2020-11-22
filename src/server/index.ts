@@ -1,36 +1,14 @@
-import http from 'http'
-import consola from 'consola'
-import express from 'express'
-import Websocket from './websocket'
-import path from 'path'
+/** @format */
+import express from 'express';
 
+const app = express();
+app.set('port', process.env.PORT || 3000);
+const http = require('http').Server(app);
 
-export default class Server{
-  private readonly app: express.Application;
-  private readonly host: string;
-  private readonly port: number;
-  private readonly server: http.Server;
-  private readonly websocket: Websocket;
+app.get('/', (req: any, res: any) => {
+  res.send('hello world');
+});
 
-  constructor(){
-    this.app = express();
-    this.port = 3000;
-    this.host = '127.0.0.1'
-    this.server = http.createServer(this.app)
-    this.websocket = new Websocket(this.server);
-  }
-
-  public init(): void{
-    this.app.use(express.static(path.resolve('dist')))
-    this.app.get('/chat2',{req, res} => {
-      res.sendFile(path.resolve('dist/'));
-    })'
-    this.app.get('/', {req,res) => {
-      res.sendFile(path.resolve('dist/index.html'))'
-    })
-    this.server.listen(this.port, this.host);
-    consola.ready(`listening on http://${this.host}:${this.port}`); 
-   }
-  }
-  const server = new Server();
-  server.init();
+const server = http.listen(3000, function() {
+  console.log('listening on 3000');
+});
