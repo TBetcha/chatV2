@@ -28,9 +28,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Home extends Vue {
-  props: {
-    msg: string
-  }
+  //something here
 }
 </script>
 <style scoped>

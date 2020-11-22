@@ -21,8 +21,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 export default class Splash extends Vue {
-  props: {
-    msg: String
-  }
+  //something here
 }
 </script>
