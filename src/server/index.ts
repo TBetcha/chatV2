@@ -4,24 +4,31 @@ import socketIO from 'socket.io';
 import path from 'path';
 import http from 'http';
 import Websocket from './websocket';
+import consola from 'consola';
 
 class app {
-  public express: express.Application;
+  public app: express.Application;
   private server: http.Server;
+  private host: string;
   private port: number;
-  //  private websocket: Websocket;
+  private websocket: Websocket;
   constructor() {
-    this.express = require('express').express();
-    this.server = http.createServer(this.express);
+    this.app = require('express')();
+    this.server = http.createServer(this.app);
     this.port = 3000;
-    //  this.websocket = new Websocket(this.server);
+    this.websocket = require('socket.io')(server);
+    this.host = '127.0.0.1';
   }
 
   public start(): void {
-    this.express.get('/', (req: any, res: any) => {
-      res.send('hello world');
+    this.app.get('/', (req: any, res: any) => {
+      res.sendFile(path.join(__dirname, '../src/app/public/index.html'));
+      this.server.listen(this.port, this.host);
+      consola.ready(`Server listening on http://${this.host}:${this.port}`);
     });
   }
-
-  //const io = require('socket.io')(http);
 }
+const server = new app();
+server.start();
+
+//const io = require('socket.io')(http);

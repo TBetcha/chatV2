@@ -5,7 +5,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
-import VueSocketIO from 'vue-socket.io-extended';
+import VueSocketIO from 'vue-socket.io';
 import io from 'socket.io-client';
 
 Vue.config.productionTip = false;
@@ -16,3 +16,10 @@ new Vue({
   vuetify,
   render: (h) => h(App),
 }).$mount('#app');
+
+Vue.use(
+  new VueSocketIO({
+    debug: false,
+    connection: '/',
+  })
+);

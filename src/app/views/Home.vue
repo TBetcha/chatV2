@@ -24,13 +24,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-
+import { Component, Vue } from 'vue-property-decorator';
+import io from 'socket.io-client';
 @Component({})
 export default class Home extends Vue {
-  //something here
+  handleLogin() {
+    this.$socket.on('init', function(data: any) {
+      console.log(data);
+    });
+    console.log('sdfsd');
+    this.$socket.emit('connection');
+  }
 }
 </script>
+
 <style scoped>
 .btn {
   font-weight: bold;
