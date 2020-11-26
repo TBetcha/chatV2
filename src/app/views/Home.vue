@@ -29,10 +29,6 @@ import io from 'socket.io-client';
 @Component({})
 export default class Home extends Vue {
   handleLogin() {
-    this.$socket.on('init', function(data: any) {
-      console.log(data);
-    });
-    console.log('sdfsd');
     this.$socket.emit('connection');
   }
 }

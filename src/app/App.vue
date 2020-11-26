@@ -15,14 +15,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Splash from './components/Splash.vue'
-import Login from './components/Login.vue'
-import { Component } from 'vue-property-decorator'
+import Vue from 'vue';
+import Splash from './components/Splash.vue';
+import Login from './components/Login.vue';
+import { Component } from 'vue-property-decorator';
 
 @Component
 export default class extends Vue {
   //  components: { Splash, Login },
+
+  created() {
+    this.$socket.emit('connection');
+  }
 }
 </script>
 <style>

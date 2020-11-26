@@ -17,6 +17,7 @@ class app {
     this.server = http.createServer(this.app);
     this.port = 3000;
     this.websocket = require('socket.io')(server);
+    // this.websocket = new Websocket(this.server);
     this.host = '127.0.0.1';
   }
 
